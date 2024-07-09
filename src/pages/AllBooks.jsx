@@ -129,7 +129,7 @@ const AllBooks = () => {
         {books.map((book) => (
           <Flex key={book._id} borderWidth="1px" borderRadius="lg" p="2" boxShadow="md" bg="gray.800">
             <Image
-              src={book.image}  // Directly using the image URL
+              src={book.image}  
               alt={book.name}
               mr="3"
               h="140"
