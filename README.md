@@ -22,10 +22,12 @@ Secure login and registration using JWT.
     ```
 2. **Install dependencies**
     ```sh
+    cd lms-frontend 
     npm install
     ```
 3. **Start frontend server**
     ```sh
+    cd lms-frontend 
     npm run dev
     ```
 ## Contributions
