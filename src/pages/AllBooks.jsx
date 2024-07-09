@@ -132,7 +132,8 @@ const AllBooks = () => {
               src={book.image}  // Directly using the image URL
               alt={book.name}
               mr="3"
-              h={100}
+              h="140"
+              w="100"
             />
             <Box flex={1} >
               <Text color="white" fontSize="s">Book Name : {book.name.toUpperCase()}</Text>
