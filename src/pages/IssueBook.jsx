@@ -109,12 +109,12 @@ const IssueBook = () => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.msg || "Error issuing book");
+        throw new Error(errorData.msg);
       }
 
       toast({
         title: "Book issued successfully",
-        description: "The book has been issued to the student",
+        description: "res.msg",
         status: "success",
         duration: 2000,
         isClosable: true,
