@@ -14,13 +14,13 @@ import AddBookModal from '../modals/AddBookModal';
 import EditBookModal from '../modals/EditBookModal'; 
 import { URL } from "../App";
 
-
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); 
   const [bookToEdit, setBookToEdit] = useState(null);
   const toast = useToast(); 
+
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -31,6 +31,7 @@ const AllBooks = () => {
         });
         const data = await res.json();
         setBooks(data);
+        console.log(data);
       } catch (err) {
         // console.error(err);
       }
@@ -128,7 +129,7 @@ const AllBooks = () => {
         {books.map((book) => (
           <Flex key={book._id} borderWidth="1px" borderRadius="lg" p="2" boxShadow="md" bg="gray.800">
             <Image
-              src={`${URL}/${book.image}`}
+              src={book.image}  // Directly using the image URL
               alt={book.name}
               mr="3"
               h={100}

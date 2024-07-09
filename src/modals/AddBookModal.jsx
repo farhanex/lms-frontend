@@ -19,27 +19,22 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
   const [qty, setQty] = useState('');
-  const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState('');
   const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('author', author);
-    formData.append('qty', qty);
-    if (image) {
-      formData.append('image', image);
-    }
+    const newBook = { name, author, qty, image: imageURL };
 
     try {
       const res = await fetch(`${URL}/api/book/addbook`, {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: formData,
+        body: JSON.stringify(newBook),
       });
 
       const data = await res.json();
@@ -58,7 +53,7 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
         setName('');
         setAuthor('');
         setQty('');
-        setImage(null);
+        setImageURL('');
       } else {
         toast({
           title: 'Error',
@@ -86,7 +81,7 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
     setName('');
     setAuthor('');
     setQty('');
-    setImage(null);
+    setImageURL('');
     onClose();
   };
 
@@ -135,14 +130,14 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
               />
             </FormControl>
             <FormControl mb="4">
-              <FormLabel color="white">Image</FormLabel>
+              <FormLabel color="white">Image URL</FormLabel>
               <Input
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
+                type="text"
+                value={imageURL}
+                onChange={(e) => setImageURL(e.target.value)}
                 bg="gray.800"
                 color="white"
-                pt={1}
-                
+                _placeholder={{ color: "gray.400" }}
               />
             </FormControl>
             <Button type="submit" colorScheme="blue" width="full">
