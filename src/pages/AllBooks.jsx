@@ -31,7 +31,7 @@ const AllBooks = () => {
         });
         const data = await res.json();
         setBooks(data);
-        console.log(data);
+        // console.log(data);
       } catch (err) {
         // console.error(err);
       }
