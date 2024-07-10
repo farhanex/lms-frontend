@@ -130,7 +130,7 @@ const BookHolder = () => {
     );
 
   return (
-    <Box className="container mx-auto" bg="gray.700" color="white" p={2} minH="100vh" fontFamily="sans-serif">
+    <Box className="container mx-auto" bg="gray.700" color="white" px="3" minH="100vh" fontFamily="sans-serif">
       <Heading as="h2" size="xl" fontWeight="bold" mb={8} mx={5}>
         Book Holders
       </Heading>

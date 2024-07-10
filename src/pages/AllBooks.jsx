@@ -115,7 +115,7 @@ const AllBooks = () => {
   }
 
   return (
-    <Box maxW="100wh" mx="auto" py="10" px="2" bg="gray.700" minH={"100vh"} color="white">
+    <Box maxW="100wh" mx="auto" py="10" px="4" bg="gray.700" minH={"100vh"} color="white">
       <Heading as="h1" fontSize="2xl" fontWeight="bold" mb="4">All Books</Heading>
       <Button
         colorScheme="blue"
