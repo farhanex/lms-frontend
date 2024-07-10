@@ -142,6 +142,7 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
                 bg="gray.800"
                 color="white"
                 pt={1}
+                required
                 
               />
             </FormControl>
