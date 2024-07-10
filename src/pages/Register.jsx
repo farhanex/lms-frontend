@@ -29,7 +29,7 @@ const Register = () => {
       justifyContent="center"
       alignItems="center"
       minH="100vh"
-      bg="gray.700" 
+      bg="gray.600" 
       color="white" 
       overflow="hidden"
       px={4} 

@@ -32,7 +32,7 @@ const Login = () => {
       justifyContent="center"
       alignItems="center"
       minH="100vh"
-      bg="gray.700"
+      bg="gray.600"
       color="white"
       overflowY="hidden"
       px={4} 
