@@ -113,8 +113,8 @@ const IssueBook = () => {
       }
 
       toast({
-        title: "Book issued successfully",
-        description: "res.msg",
+        title: "Success",
+        description: res.msg,
         status: "success",
         duration: 2000,
         isClosable: true,
@@ -123,7 +123,7 @@ const IssueBook = () => {
     } catch (err) {
       // console.error(err);
       toast({
-        title: "Error issuing book",
+        title: "Error",
         description: err.message,
         status: "error",
         duration: 2000,
