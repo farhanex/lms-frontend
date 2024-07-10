@@ -1,6 +1,6 @@
 # Library Management System
 
-This Library Management System is a web application designed to manage book issue and returns in a library. It uses a React frontend and a Node.js backend, with JWT for authentication, and Chakra UI for styling.
+This Library Management System is a web application designed to manage book issue and returns in a library. It uses a React frontend and a Node.js backend, with JWT for authentication,Chakra UI for styling and Multer for images upload.
 ## Features
 - **Authentication**:
 Secure login and registration using JWT.
