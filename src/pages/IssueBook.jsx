@@ -107,26 +107,35 @@ const IssueBook = () => {
         body: JSON.stringify(issueData),
       });
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.msg);
+      const data = await res.json();
+      
+      if(res.ok){
+        toast({
+          title: 'Success',
+          description: data.msg,
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+          position:"top"
+        });
+      } else {
+        toast({
+          title: 'Error',
+          description: data.msg,
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+          position:"top"
+        });
       }
 
-      toast({
-        title: "Success",
-        description: res.msg,
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-        position:"top"
-      });
     } catch (err) {
       // console.error(err);
       toast({
-        title: "Error",
-        description: err.message,
-        status: "error",
-        duration: 2000,
+        title: 'Server error.',
+        description: '',
+        status: 'error',
+        duration: 5000,
         isClosable: true,
         position:"top"
       });
