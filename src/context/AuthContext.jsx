@@ -2,12 +2,13 @@ import React, { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { URL } from "../App";
+
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const toasts = useToast();
+  const toast = useToast();
 
   const [user, setUser] = useState(null);
 
@@ -21,7 +22,6 @@ export const AuthContextProvider = ({ children }) => {
       const storedUser = localStorage.getItem("user");
 
       if (!token || !storedUser) {
-        handleLogout();
         return;
       }
 
@@ -31,8 +31,7 @@ export const AuthContextProvider = ({ children }) => {
         navigate("/", { replace: true });
       }
     } catch (err) {
-      // console.error("Error checking user login:", err);
-      handleLogout();
+      logoutUser();
     }
   };
 
@@ -58,7 +57,7 @@ export const AuthContextProvider = ({ children }) => {
         localStorage.setItem("user", result.user.role);
         setUser(result.user.role);
 
-        toasts({
+        toast({
           title: "Success",
           description: result.msg,
           status: "success",
@@ -72,8 +71,7 @@ export const AuthContextProvider = ({ children }) => {
         throw new Error(result.msg);
       }
     } catch (err) {
-      // console.error("Error logging in:", err);
-      toasts({
+      toast({
         title: "Error",
         description: err.message,
         status: "error",
@@ -99,7 +97,7 @@ export const AuthContextProvider = ({ children }) => {
       const result = await res.json();
 
       if (res.ok) {
-        toasts({
+        toast({
           title: "Success",
           description: result.msg,
           status: "success",
@@ -113,8 +111,7 @@ export const AuthContextProvider = ({ children }) => {
         throw new Error(result.msg);
       }
     } catch (err) {
-      // console.error("Error registering:", err);
-      toasts({
+      toast({
         title: "Error",
         description: err.message,
         status: "error",
@@ -138,7 +135,7 @@ export const AuthContextProvider = ({ children }) => {
       localStorage.removeItem("user");
       setUser(null);
 
-      toasts({
+      toast({
         title: "Success",
         description: result.msg,
         status: "success",
@@ -149,8 +146,7 @@ export const AuthContextProvider = ({ children }) => {
 
       navigate("/login", { replace: true });
     } catch (err) {
-      // console.error("Error logging out:", err);
-      toasts({
+      toast({
         title: "Error",
         description: err.message,
         status: "error",
@@ -159,13 +155,6 @@ export const AuthContextProvider = ({ children }) => {
         position: "top",
       });
     }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/login", { replace: true });
   };
 
   return (

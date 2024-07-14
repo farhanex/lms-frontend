@@ -1,17 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
-  Button,
   Heading,
   Text,
  VStack,
  Spinner
 } from "@chakra-ui/react";
-// import AuthContext from "../context/AuthContext";
 import { URL } from "../App";
 
 const StudentProfile = () => {
-  // const { logoutUser } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -82,9 +79,6 @@ const StudentProfile = () => {
         mb={8}
         color="white" 
       >
-        {/* <Heading as="h2" size="lg" fontWeight="semibold" mb={4}>
-          {profile.role} Profile
-        </Heading> */}
         <Text mb={4}>
           <strong>Name:</strong> {profile.name}
         </Text>
@@ -95,14 +89,6 @@ const StudentProfile = () => {
           <strong>Role:</strong> {profile.role}
         </Text>
       </Box>
-      {/* <Button
-        onClick={logoutUser}
-        colorScheme="blue"
-        variant="solid"
-        size="md"
-      >
-        Logout
-      </Button> */}
     </Box>
   );
 };

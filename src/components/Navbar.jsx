@@ -44,6 +44,7 @@ const Navbar = ({ title = 'LMS' }) => {
                     <Link as={RouterLink} to="/allbooks" onClick={onClose}>All Books</Link>
                     <Link as={RouterLink} to="/issuebook" onClick={onClose}>Issue Book</Link>
                     <Link as={RouterLink} to="/bookholders" onClick={onClose}>Book Holders</Link>
+                    <Link as={RouterLink} to="/allstudents" onClick={onClose}>All Students</Link>
                   </>
                 )}
                 <Button colorScheme='red'  variant="solid" size="md" onClick={logoutUser}>Logout</Button>
@@ -79,6 +80,8 @@ const Navbar = ({ title = 'LMS' }) => {
                     <Link as={RouterLink} to="/allbooks" onClick={onClose}>All Books</Link>
                     <Link as={RouterLink} to="/issuebook" onClick={onClose}>Issue Book</Link>
                     <Link as={RouterLink} to="/bookholders" onClick={onClose}>Book Holders</Link>
+                    <Link as={RouterLink} to="/allstudents" onClick={onClose}>All Students</Link>
+
                   </>
                 )}
                 <Button colorScheme='red'  variant="solid" size="md" onClick={logoutUser}>Logout</Button>

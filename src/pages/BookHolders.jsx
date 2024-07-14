@@ -27,6 +27,7 @@ const BookHolder = () => {
   const [holders, setHolders] = useState([]);
   const [selectedIssueId, setSelectedIssueId] = useState('');
   const [secretKey, setSecretKey] = useState('');
+  const [loading, setLoading] = useState(true);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -42,7 +43,9 @@ const BookHolder = () => {
           throw new Error("Failed to fetch book holders");
         }
         const data = await res.json();
+        console.log(data);
         setHolders(data);
+        setLoading(false);
       } catch (err) {
         console.error(err);
         toast({
@@ -52,6 +55,7 @@ const BookHolder = () => {
           duration: 5000,
           isClosable: true,
         });
+        setLoading(false);
       }
     };
     fetchBookHolders();
@@ -111,7 +115,7 @@ const BookHolder = () => {
     }
   };
 
-  if (!holders)
+  if (loading)
     return (
       <Box
         minH="100vh"
@@ -124,7 +128,7 @@ const BookHolder = () => {
       >
         <VStack spacing={4}>
           <Spinner size="xl" />
-          <Text>Loading Student profile...</Text>
+          <Text>Loading Book holders...</Text>
         </VStack>
       </Box>
     );

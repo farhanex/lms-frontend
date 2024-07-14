@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
 import AdminProfile from "../components/AdminProfile";
 import StudentProfile from "../components/StudentProfile";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
+  const user = localStorage.getItem('user')
+  const token = localStorage.getItem('token')
 
-  if (!user) {
+  if (!user||!token) {
     return <Navigate to="/login" replace />;
   }
 

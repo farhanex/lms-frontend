@@ -12,6 +12,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import AuthContext from "../context/AuthContext";
+import {Link} from "react-router-dom"; 
+
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -101,6 +103,11 @@ const Login = () => {
             <Button type="submit" colorScheme="blue" width="full">
               Login
             </Button>
+            <Box>
+              <Link as={Link} to="/forgot-password" color="blue.400">
+                Forgot Password?
+              </Link>
+            </Box>
           </VStack>
         </form>
       </Box>

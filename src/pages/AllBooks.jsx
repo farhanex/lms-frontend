@@ -20,6 +20,7 @@ const AllBooks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); 
   const [bookToEdit, setBookToEdit] = useState(null);
+  const [loading, setLoading] = useState(true);
   const toast = useToast(); 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -29,10 +30,23 @@ const AllBooks = () => {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch books');
+        }
+        
         const data = await res.json();
         setBooks(data);
+        setLoading(false);
       } catch (err) {
-        // console.error(err);
+        toast({
+          title: 'Error',
+          description: 'Failed to load books',
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+        setLoading(false);
       }
     };
 
@@ -96,7 +110,7 @@ const AllBooks = () => {
     setIsEditModalOpen(true);
   };
 
-  if (!books) {
+  if (loading) {
     return (
       <Box
         minH="100vh"

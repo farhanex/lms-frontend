@@ -4,31 +4,43 @@ import {
   Heading,
   Text,
   SimpleGrid,
-  Spinner
+  Spinner,
+  useToast
 
 } from '@chakra-ui/react';
 import { URL } from "../App";
 
 const HistoryPage = () => {
   const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const toast = useToast(); 
 
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch(`${URL}/api/issuebooks/myhistory`, {
+        const res = await fetch(`${URL}/api/issuebooks/myhistory`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        if (!response.ok) {
+        if (!res.ok) {
           throw new Error('Failed to fetch history');
         }
-        const historyData = await response.json();
+        const historyData = await res.json();
         setHistory(historyData);
+        setLoading(false);
         // console.log(historyData);
       } catch (error) {
+        toast({
+          title: 'Error',
+          description: 'Failed to load books',
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+        setLoading(false);
         // console.error('Error fetching history:', error);
       }
     };
@@ -37,7 +49,7 @@ const HistoryPage = () => {
   }, []);
 
 
-  if (!history) {
+  if (loading) {
     return (
       <Box
         minH="100vh"
