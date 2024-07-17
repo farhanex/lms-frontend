@@ -50,7 +50,7 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
           title: 'Success',
           description: data.msg,
           status: 'success',
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
           position:"top"
         });
@@ -64,18 +64,18 @@ const AddBookModal = ({ isOpen, onClose, onAddBook }) => {
           title: 'Error',
           description: data.msg,
           status: 'error',
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
           position:"top"
         });
       }
     } catch (err) {
-      // console.error(err);
+      console.error(err);
       toast({
         title: 'Server error.',
-        description: '',
+        description: "only images are allowed",
         status: 'error',
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
         position:"top"
       });

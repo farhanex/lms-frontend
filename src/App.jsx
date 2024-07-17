@@ -16,8 +16,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import AllStudents from "./pages/AllStudents";
 
-// export const URL="http://localhost:5000"
-export const URL="https://lms-backend-mtey.onrender.com"
+export const URL="http://localhost:5000"
+// export const URL="https://lms-backend-mtey.onrender.com"
 
 
 function App() {
