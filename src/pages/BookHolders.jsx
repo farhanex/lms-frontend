@@ -43,7 +43,7 @@ const BookHolder = () => {
           throw new Error("Failed to fetch book holders");
         }
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         setHolders(data);
         setLoading(false);
       } catch (err) {
