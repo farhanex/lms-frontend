@@ -18,7 +18,7 @@ Secure login and registration using JWT.
 
 1. **Clone the repository**
     ```sh
-    git clone https://github.com/farhanoxg/lms-frontend.git
+    git clone https://github.com/farhanex/lms-frontend.git
     ```
 2. **Install dependencies**
     ```sh
